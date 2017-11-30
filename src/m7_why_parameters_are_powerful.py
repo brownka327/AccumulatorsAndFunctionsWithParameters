@@ -13,7 +13,7 @@ def main():
     run_test_draw_circles()
     # Un-comment the next lines when you are ready to use them.
     run_test_better_draw_circles()
-    # run_test_even_better_draw_circles()
+    run_test_even_better_draw_circles()
 
 
 # ----------------------------------------------------------------------
@@ -64,7 +64,7 @@ def draw_circles():
     window.close_on_mouse_click()
 
 # ----------------------------------------------------------------------
-# TODO: 2.
+# DONE: 2.
 #   First, RUN this program.  You will see that draw_circles draws
 #   concentric circles whose radii vary by 10.
 #
@@ -100,24 +100,24 @@ def run_test_better_draw_circles():
 
     #Test 1
     expected = '0, 10, 20, 30, 40 ... 200'
-    answer = better_draw_circles(20,10)
+    answer = better_draw_circles(10)
     print('Test 1 expected r of cocentric circles:',expected)
 
     #Test 2
     expected = '0, 3 ,6 ,9, 12 ... 60'
-    answer = better_draw_circles(20,3)
+    answer = better_draw_circles(3)
     print('Test 2 expected r of cocentric circles:', expected)
 
 
     #Test 3
     expected = '0,5,10,15,20...100'
-    answer = better_draw_circles(20,5)
+    answer = better_draw_circles(5)
     print('Test 3 expected r of cocentric circles:', expected)
 
 
 
 
-def better_draw_circles(n,r):
+def better_draw_circles(r):
 
 
     window = rg.RoseWindow(400, 400)
@@ -135,7 +135,7 @@ def better_draw_circles(n,r):
 
 
 # ----------------------------------------------------------------------
-# TODO: 3.
+# DONE: 3.
 #   In the previous exercise, you made a MORE POWERFUL version
 #   of draw_circles by introducing a PARAMETER for the amount by
 #   which the radii of the concentric circles increase.
@@ -162,6 +162,51 @@ def better_draw_circles(n,r):
 #   In testing your even_better_draw_circles function,
 #   can you make some fun pictures?
 # ----------------------------------------------------------------------
+
+
+def run_test_even_better_draw_circles():
+    print('-----------------------------------')
+    print('testing even_better_draw_circles')
+    print('-----------------------------------')
+
+    # Test 1
+    expected = '0, 10, 20, 30, 40 ... 200'
+    answer = even_better_draw_circles(20,3,10,10,1,.05)
+    print('Test 1 expected r of cocentric circles:', expected)
+
+    # Test 2
+    expected = '0, 3 ,6 ,9, 12 ... 60'
+    answer = even_better_draw_circles(50,5,20,20,.9,.1)
+    print('Test 2 expected r of cocentric circles:', expected)
+
+    # Test 3
+    expected = '0,5,10,15,20...100'
+    answer = even_better_draw_circles(100,2,5,2,.1,.01)
+    print('Test 3 expected r of cocentric circles:', expected)
+
+
+
+def even_better_draw_circles(n,r,centerchange_x,centerchange_y,thickchange,renderspeed):
+    #n =  number of circles
+    #r = change in radius per iteration
+    #centerchange_x affects how much the center changes in the x-direction per iteration
+    #centerchange_y affects how much the center changes in the y-direction per iteration
+    #renderspeed affects how fast circles are rendered
+
+    window = rg.RoseWindow(700, 700)
+
+    for k in range(n+1):
+        center = rg.Point(k*centerchange_x,k*centerchange_y)
+        circle = rg.Circle(center, r * k)
+        circle.outline_thickness = k * thickchange
+        circle.attach_to(window)
+        window.render(renderspeed)
+
+    window.close_on_mouse_click()
+
+
+
+
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
