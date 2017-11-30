@@ -2,8 +2,8 @@
 This module lets you experience the POWER of FUNCTIONS and PARAMETERS.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Kyle Brown.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -12,7 +12,7 @@ def main():
     """ Calls the   TEST   functions in this module. """
     run_test_draw_circles()
     # Un-comment the next lines when you are ready to use them.
-    # run_test_better_draw_circles()
+    run_test_better_draw_circles()
     # run_test_even_better_draw_circles()
 
 
@@ -31,7 +31,7 @@ def run_test_draw_circles():
     """ Tests the   draw_circles   function. """
     # ------------------------------------------------------------------
     # Students:
-    #   Do NOT touch this function - it has no TODO in it.
+    #   Do NOT touch this function - it has no tudu in it.
     # ------------------------------------------------------------------
     print()
     print('--------------------------------------------------')
@@ -92,6 +92,46 @@ def draw_circles():
 #   run_test_draw_circles  may get you started more quickly on your new
 #   better_draw_circles  and  run_test_better_draw_circles.
 # ----------------------------------------------------------------------
+def run_test_better_draw_circles():
+
+    print('-----------------------------------')
+    print('testing better_draw_circles')
+    print('-----------------------------------')
+
+    #Test 1
+    expected = '0, 10, 20, 30, 40 ... 200'
+    answer = better_draw_circles(20,10)
+    print('Test 1 expected r of cocentric circles:',expected)
+
+    #Test 2
+    expected = '0, 3 ,6 ,9, 12 ... 60'
+    answer = better_draw_circles(20,3)
+    print('Test 2 expected r of cocentric circles:', expected)
+
+
+    #Test 3
+    expected = '0,5,10,15,20...100'
+    answer = better_draw_circles(20,5)
+    print('Test 3 expected r of cocentric circles:', expected)
+
+
+
+
+def better_draw_circles(n,r):
+
+
+    window = rg.RoseWindow(400, 400)
+
+    center = rg.Point(200, 200)
+    for k in range(21):
+        circle = rg.Circle(center, r * k)
+        circle.attach_to(window)
+        window.render(0.05)  # Pauses for 0.05 seconds after rendering.
+
+    window.close_on_mouse_click()
+
+
+
 
 
 # ----------------------------------------------------------------------
