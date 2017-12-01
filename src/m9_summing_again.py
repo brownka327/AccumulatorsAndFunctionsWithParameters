@@ -130,12 +130,12 @@ def sum_powers_in_range(m, n, p):
     #   test cases; that would defeat the purpose of TESTING!
     # ------------------------------------------------------------------
 
-    tot = 0
+    tot2 = 0
 
-    for k in range(n,m):
-        tot = tot + ((k + 1) ** p)
+    for k in range(m,n+1):
+        tot2 = tot2 + ((k) ** p)
 
-    return (tot)
+    return (tot2)
 
 
 
